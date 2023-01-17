@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>♣ BlackJack ♥</title>
+    <script defer src="assets/js/underscore-umd-min.js"></script>
     <script defer src="assets/js/juego.js"></script>
     <!-- DCN Bootstrap -->
     <link
@@ -13,6 +14,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link rel="icon" type="image/png" href="assets/cartas/10C.png" />
     <!-- Se tiene que poner abajo del CDN de bootstrap -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
@@ -20,10 +22,10 @@
     <header class="titulo">♣ BlackJack ♥</header>
 
     <div class="mt-2">
-      <div class="col text-center p-0">
-        <button class="btn btn-danger">Nuevo Juego</button>
-        <button class="btn btn-primary">Pedir Carta</button>
-        <button class="btn btn-primary">Detener</button>
+      <div id="divBotones" class="col text-center p-0">
+        <button id="btnNuevo" class="btn btn-danger">Nuevo Juego</button>
+        <button id="btnPedir" class="btn btn-primary">Pedir Carta</button>
+        <button id="btnDetener" class="btn btn-primary">Detener</button>
       </div>
     </div>
 
@@ -31,10 +33,10 @@
       <div class="col">
         <h1>Jugador 1 - <small>0</small></h1>
         <div id="jugador-cartas">
+          <!-- <img class="carta" src="assets/cartas/2C.png" alt="2C" />
           <img class="carta" src="assets/cartas/2C.png" alt="2C" />
           <img class="carta" src="assets/cartas/2C.png" alt="2C" />
-          <img class="carta" src="assets/cartas/2C.png" alt="2C" />
-          <img class="carta" src="assets/cartas/2C.png" alt="2C" />
+          <img class="carta" src="assets/cartas/2C.png" alt="2C" /> -->
         </div>
       </div>
     </div>
@@ -43,10 +45,10 @@
       <div class="col">
         <h1>Computadora- <small>0</small></h1>
         <div id="computadora-cartas">
+          <!-- <img class="carta" src="assets/cartas/2C.png" alt="2C" />
           <img class="carta" src="assets/cartas/2C.png" alt="2C" />
           <img class="carta" src="assets/cartas/2C.png" alt="2C" />
-          <img class="carta" src="assets/cartas/2C.png" alt="2C" />
-          <img class="carta" src="assets/cartas/2C.png" alt="2C" />
+          <img class="carta" src="assets/cartas/2C.png" alt="2C" /> -->
         </div>
       </div>
     </div>
