@@ -47,19 +47,24 @@ class Persona {
 
 }
 
-const spiderman = new Persona('Peter');
+// HERENCIA
+
+class Heroe extends Persona {
+    clan = 'sin clan';
+
+    constructor(nombre, codigo, frase) {
+        super(nombre, codigo, frase);
+        this.clan = 'Los Avengers';
+    }
+
+    //sobreescribir un metodo
+    quienSoy() {
+        console.log(`Soy ${this.nombre}, ${this.clan}`)
+        // mandar a llamar el metodo SIN SOBREESCRIBIR
+        super.quienSoy();
+    }
+}
+
+const spiderman = new Heroe('Peter', 'spider', 'hey hey');
 console.log(spiderman)
-spiderman.quienSoy()
-spiderman.miFrase()
-spiderman.setComidaFavorita = 'El pie de Cereza';
-
-// cosas malas que pueden suceder en JavaScript
-// spiderman.comida = 'duende verde'
-spiderman.nuevaVar = 'esto no se deberia permitir'
-console.log(spiderman.getComidaFavorita)
-
-// console.log('Conteo estatico ' + Persona._conteo)
-console.log(Persona.conteo)
-
-Persona.propiedaExterna = "Crea variable estatica de esta manera"
-Persona.mensaje()
+console.log(spiderman.quienSoy())
