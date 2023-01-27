@@ -1,6 +1,13 @@
 import './styles.css';
-import { Todo } from './classes/todo.class.js'
+import { Todo, TodoList } from './classes/'
+import { crearTodoHTML } from './js/componentes';
 
+// exportamos la clase
+export const todoList = new TodoList();
 const tarea = new Todo('Aprender Java Script');
 
-console.log(tarea)
+
+todoList.nuevoTodo(tarea)
+
+
+crearTodoHTML(tarea);
