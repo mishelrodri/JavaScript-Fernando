@@ -1,13 +1,18 @@
-import { buscarHeroe } from './js/callbacks';
-import './styles.css';
+// import { promesaLenta, promesaMedia, promesaRapida } from './js/promesas'
+import { buscarHeroe, buscarHeroeAsync } from './js/promesas'
 
-const heroeId = 'spidey';
+// promesaLenta.then(console.log);
+// promesaMedia.then(console.log);
+// promesaRapida.then(console.log);
 
 
-buscarHeroe(heroeId, (err, heroe) => {
-    if (err) {
-        console.error(err)
-    } else {
-        console.info(heroe)
-    }
-});
+// Promise.race([promesaLenta, promesaMedia, promesaRapida])
+//     .then(console.log)
+//     .catch(console.warn)
+
+buscarHeroe('capi')
+    .then(console.log)
+    .catch(console.warn)
+buscarHeroeAsync('spidey')
+    .then(heroe => console.log(heroe))
+    .catch(console.warn)
