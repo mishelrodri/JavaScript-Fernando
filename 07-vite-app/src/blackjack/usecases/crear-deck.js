@@ -1,14 +1,14 @@
 import _ from "underscore";
 
 /**
- *
- * @param {array} tiposCarta
- * @param {array} tiposEspeciales
- * @returns {array}
+ *Esta funcion crea un nuevo deck
+ * @param {array<string>} tiposCarta Ejemplo ["C", "D", "H", "S"]
+ * @param {array<string>} tiposEspeciales
+ * @returns {array<string>} retorna un nuevo deck de cartas
  */
 export const crearDeck = (tiposCarta, tiposEspeciales) => {
-  if (!tiposCarta) throw Error("TiposdeCarta es obligatorio");
-
+  if (!tiposCarta || tiposCarta.length === 0) throw Error("TiposdeCarta es obligatorio como un arr de strings");
+  if (!tiposEspeciales || tiposEspeciales.length === 0) throw Error("tiposEspeciales es obligatorio como un arr de strings");
   let deck = [];
 
   for (let i = 2; i <= 10; i++) {
