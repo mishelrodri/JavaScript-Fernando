@@ -28,15 +28,16 @@ const loadStore = () => {
 const getTodos = (filter = Filters.All) => {
     switch (filter) {
         case Filters.All:
-            return [...state.todos]
+            return [...state.todos];
         case Filters.Completed:
-            return state.filter(todo => todo.done);
-        case Filters.Peding:
-            return state.filter(todo => !todo.done);
+            return state.todos.filter(todo => todo.done);
+        case Filters.Pending:
+            return state.todos.filter(todo => !todo.done);
         default:
-            throw new Error(`Option ${filter} is not valid`);
+            throw new Error(`Option ${filter} is not vv.`);
     }
 }
+
 
 /**
  * 
@@ -53,8 +54,12 @@ const addTodo = (description) => {
  * @param {String} todoId 
  */
 const toggleTodo = (todoId) => {
-    throw new Error('No implementado')
-
+    state.todos = state.todos.map(todo => {
+        if (todo.id === todoId) {
+            todo.done = !todo.done;
+        }
+        return todo;
+    })
 }
 
 const deleteTodo = (todoId) => {
