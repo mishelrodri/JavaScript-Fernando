@@ -17,12 +17,27 @@ const state = {
 
 
 const initStore = () => {
-    console.log(state)
+    // console.log(state)
+    loadStore();
     console.log('init Store ⚡🥑');
 }
 
 const loadStore = () => {
-    throw new Error('No implementado')
+    // throw new Error('No implementado');
+
+    if (!localStorage.getItem('state')) {
+        return;
+    }
+
+    const { todos, filter } = JSON.parse(localStorage.getItem('state'))
+    state.todos = todos;
+    state.filter = filter;
+}
+
+const saveStsteLocalStorage = () => {
+    // localStorage.setItem('state', 'hola')
+    // console.log(JSON.stringify(state));
+    localStorage.setItem('state', JSON.stringify(state));
 }
 
 const getTodos = (filter = Filters.All) => {
@@ -46,6 +61,8 @@ const getTodos = (filter = Filters.All) => {
 const addTodo = (description) => {
     if (!description) throw new Error('No implementado')
     state.todos.push(new Todo(description));
+    saveStsteLocalStorage();
+
 
 }
 
@@ -60,13 +77,17 @@ const toggleTodo = (todoId) => {
         }
         return todo;
     })
+    saveStsteLocalStorage();
+
 }
 
 const deleteTodo = (todoId) => {
     state.todos = state.todos.filter(todo => todo.id !== todoId)
+    saveStsteLocalStorage();
+
 }
 
-const deleteCompleted = (todoId) => {
+const deleteCompleted = () => {
     state.todos = state.todos.filter(todo => todo.done)
 
 
@@ -75,6 +96,7 @@ const deleteCompleted = (todoId) => {
 const setFilter = (newFilter = Filters.All) => {
     state.todos = newFilter;
 
+    saveStsteLocalStorage();
 
 }
 

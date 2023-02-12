@@ -10,6 +10,7 @@ import { renderTodos } from './use-cases';
 
 const elementIds = {
     TodoList: '.todo-list',
+    NewTodoInput: '.new-todo',
 }
 export const App = (elementId) => {
 
@@ -27,5 +28,35 @@ export const App = (elementId) => {
         document.querySelector(elementId).append(app);
         displayTodos();
     })();
+
+    //REFERENCIAS abajo porque arriba se crea apenas la estructura del HTML
+
+    const newDescription = document.querySelector(elementIds.NewTodoInput);
+    const todoListUL = document.querySelector(elementIds.TodoList);
+
+    newDescription.addEventListener('keyup', (event) => {
+        // console.log(event);
+        if (event.keyCode !== 13) return;
+        if (event.target.value.trim().length === 0) return;
+        todoStore.addTodo(event.target.value);
+        displayTodos();
+        event.target.value = '';
+    });
+
+    todoListUL.addEventListener('click', (event) => {
+        const elemt = event.target.closest('[data-id]');
+
+        // if (event.target.classList.value === 'destroy') {
+        if (event.target.className === 'destroy') {
+            todoStore.deleteTodo(elemt.getAttribute('data-id'));
+            displayTodos();
+            return;
+        }
+        // console.log()
+
+        todoStore.toggleTodo(elemt.getAttribute('data-id'));
+        displayTodos();
+    });
+
 
 }
