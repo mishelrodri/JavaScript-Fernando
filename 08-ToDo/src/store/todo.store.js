@@ -1,9 +1,9 @@
 import { Todo } from "../todos/models/todo.model";
 
 const Filters = {
-    All: 'all',
-    Completed: 'Completed',
-    Peding: 'Peding',
+    All: 'Todos',
+    Completed: 'Completados',
+    Pending: 'Pendientes',
 }
 
 const state = {
@@ -94,7 +94,7 @@ const deleteCompleted = () => {
 }
 
 const setFilter = (newFilter = Filters.All) => {
-    state.todos = newFilter;
+    state.filter = newFilter;
 
     saveStsteLocalStorage();
 

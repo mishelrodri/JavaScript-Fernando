@@ -11,6 +11,9 @@ import { renderTodos } from './use-cases';
 const elementIds = {
     TodoList: '.todo-list',
     NewTodoInput: '.new-todo',
+    ClearCompleted: '.clear-completed',
+    FilterDiv: '.filters',
+    allFilters: '.filtro',
 }
 export const App = (elementId) => {
 
@@ -33,6 +36,9 @@ export const App = (elementId) => {
 
     const newDescription = document.querySelector(elementIds.NewTodoInput);
     const todoListUL = document.querySelector(elementIds.TodoList);
+    const clearCompletedButton = document.querySelector(elementIds.ClearCompleted);
+    const filterDiv = document.querySelector(elementIds.FilterDiv);
+    const allFilters = document.querySelectorAll(elementIds.allFilters);
 
     newDescription.addEventListener('keyup', (event) => {
         // console.log(event);
@@ -56,6 +62,32 @@ export const App = (elementId) => {
 
         todoStore.toggleTodo(elemt.getAttribute('data-id'));
         displayTodos();
+    });
+
+
+    clearCompletedButton.addEventListener('click', () => {
+        todoStore.deleteCompleted();
+        displayTodos();
+    });
+
+    filterDiv.addEventListener('click', (event) => {
+
+        /*         if (event.target.className === 'filtro' || event.target.className === 'selected filtro') {
+                    // console.log(event.target)
+                    renderTodos(elementIds.TodoList, todoStore.getTodos(event.target.text));
+                    event.target.classList.add('selected');
+                }
+        
+         */
+
+        //SOLUCION DE FERNANDO
+        if (event.target.className === 'filtro' || event.target.className === 'selected filtro') {
+            // renderTodos(ElementIDs.TodoList, todoStore.getTodo(event.target.text));
+            todoStore.setFilter(event.target.text);
+            displayTodos();
+            allFilters.forEach(el => el.classList.remove('selected'));
+            event.target.classList.add('selected');
+        }
     });
 
 
