@@ -1,7 +1,7 @@
 import todoStore from '../store/todo.store';
 // que lo importe en crudo
 import html from './app.html?raw'
-import { renderTodos } from './use-cases';
+import { renderTodos, renderPending } from './use-cases';
 /**
  * 
  * @param {String} elementId 
@@ -14,14 +14,21 @@ const elementIds = {
     ClearCompleted: '.clear-completed',
     FilterDiv: '.filters',
     allFilters: '.filtro',
+    PendingCount: '#pending-count',
 }
 export const App = (elementId) => {
+
 
 
     const displayTodos = () => {
         const todos = todoStore.getTodos(todoStore.getCurrentFilter());
         // console.log(todos);
         renderTodos(elementIds.TodoList, todos);
+        updatePendingCount();
+    }
+
+    const updatePendingCount = () => {
+        renderPending(elementIds.PendingCount);
     }
 
     //se va ejecutar cuando la funcion app se llama
