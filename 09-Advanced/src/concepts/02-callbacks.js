@@ -7,13 +7,24 @@ import { heroes } from "../data/heroes";
 export const callBacksComponent = (element) => {
 
     const id = '5d86371f1efebc31def272e2';
-    findHeroe(id, (error, hero) => {
+    const id2 = '5d86371f9f80b591f499df32';
+    findHeroe(id, (error, hero1) => {
         // element.innerHTML = hero?.name || 'No hay Heroe';
         if (error) {
             element.innerHTML = error;
             return;
         }
-        element.innerHTML = hero.name;
+
+        findHeroe(id2, (error, hero2) => {
+            if (error) {
+                element.innerHTML = error;
+                return;
+            }
+            element.innerHTML = `${hero1.name} / ${hero2.name}`;
+
+        });
+
+        // element.innerHTML = hero1.name;
 
     });
 
