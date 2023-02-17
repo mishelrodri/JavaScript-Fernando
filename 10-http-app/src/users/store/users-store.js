@@ -28,13 +28,33 @@ const loadPreviousPage = async () => {
 }
 
 
-const onUserChanged = async () => {
-    throw new Error('No implementado')
+const onUserChanged = async (updateUser) => {
+    let wasFound = false;
+
+    state.users = state.users.map(user => {
+        if (user.id === updateUser.id) {
+            wasFound = true;
+            return updateUser;
+        }
+
+        return user;
+    });
+
+    if (state.users.length < 10 && !wasFound) {
+        state.users.push(updateUser);
+    }
+
 }
 
 
 const reloadPage = async () => {
-    throw new Error('No implementado')
+    const users = await loadUsersByPage(state.currentPage);
+    if (users.length === 0) {
+        await loadPreviousPage();
+        return;
+    };
+
+    state.users = users;
 }
 
 
