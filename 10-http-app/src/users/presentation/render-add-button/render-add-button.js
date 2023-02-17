@@ -1,3 +1,4 @@
+import { showModal } from '../render-modal/render-modal';
 import './render-add-button.css'
 /**
  * 
@@ -17,6 +18,9 @@ export const renderAddButton = (element) => {
         // ! Con callback desde el padre
         // if (!callback) return;
         // callback();
-    })
+
+        showModal();
+
+    });
 
 }
